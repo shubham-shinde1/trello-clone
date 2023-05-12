@@ -1,5 +1,5 @@
 import { useState } from "react";
-import style from "./NavBar.module.css";
+import style from "./Navbar.module.css";
 import {
   BsGrid3X3GapFill,
   BsSearch,
