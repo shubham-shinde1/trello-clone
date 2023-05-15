@@ -43,3 +43,12 @@
   width: 6rem;
   text-transform: none;
 }
+ul {
+  padding-left: 1rem;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
+}
