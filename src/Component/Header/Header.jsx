@@ -1,26 +1,52 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+import React from "react";
+import { styled } from "@mui/material/styles";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Badge,
+  TextField,
+} from "@mui/material";
+import {
+  StarBorderOutlined,
+  StarOutlined,
+  MoreVert,
+  DashboardOutlined,
+  TableChartOutlined,
+  AppsOutlined,
+  FilterListOutlined,
+  NotificationsOutlined,
+  PersonOutlined,
+  ArrowDropDown,
+  ShareOutlined,
+} from "@mui/icons-material";
+import { Menu, MenuItem } from "@mui/material";
 
-export default function MenuAppBar() {
-  const [auth, setAuth] = React.useState(true);
+const StyledIconButton = styled(IconButton)`
+  color: white;
+`;
+
+const StyledAppBar = styled(AppBar)`
+  background-color: rgba(2, 106, 167, 0.8);
+  backdrop-filter: blur(10px);
+`;
+
+const StyledToolbar = styled(Toolbar)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const BoardAppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [editTitle, setEditTitle] = React.useState(false);
+  const [title, setTitle] = React.useState("Board Title");
+  const inputRef = React.useRef();
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  const open = Boolean(anchorEl);
 
-  const handleMenu = (event) => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -28,68 +54,85 @@ export default function MenuAppBar() {
     setAnchorEl(null);
   };
 
+  const handleTitleClick = () => {
+    setEditTitle(true);
+  };
+
+  const handleTitleBlur = () => {
+    setEditTitle(false);
+  };
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleTitleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      setEditTitle(false);
+      inputRef.current.blur();
+    }
+  };
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Photos
+    <StyledAppBar position="static" elevation={0}>
+      <StyledToolbar>
+        <StyledIconButton edge="start" color="inherit" aria-label="menu">
+          <DashboardOutlined />
+        </StyledIconButton>
+        {editTitle ? (
+          <TextField
+            inputRef={inputRef}
+            value={title}
+            onChange={handleTitleChange}
+            onBlur={handleTitleBlur}
+            onKeyPress={handleTitleKeyPress}
+            autoFocus
+            fullWidth
+          />
+        ) : (
+          <Typography variant="h6" onClick={handleTitleClick}>
+            {title}
           </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-    </Box>
+        )}
+        <StyledIconButton color="inherit">
+          <StarBorderOutlined />
+        </StyledIconButton>
+        <StyledIconButton color="inherit">
+          <ArrowDropDown />
+        </StyledIconButton>
+        <StyledIconButton color="inherit">
+          <AppsOutlined />
+        </StyledIconButton>
+        <StyledIconButton color="inherit">
+          <TableChartOutlined />
+        </StyledIconButton>
+        <StyledIconButton color="inherit">
+          <FilterListOutlined />
+        </StyledIconButton>
+        <StyledIconButton color="inherit">
+          <Badge badgeContent={4} color="secondary">
+            <NotificationsOutlined />
+          </Badge>
+        </StyledIconButton>
+        <StyledIconButton color="inherit">
+          <PersonOutlined />
+        </StyledIconButton>
+        <StyledIconButton color="inherit" onClick={handleClick}>
+          <MoreVert />
+        </StyledIconButton>
+        <StyledIconButton color="inherit">
+          <ShareOutlined />
+        </StyledIconButton>
+        <Menu anchorEl={anchorEl} keepMounted open={open} onClose={handleClose}>
+          <MenuItem onClick={handleClose}>Power-Ups</MenuItem>
+          <MenuItem onClick={handleClose}>Automation</MenuItem>
+          <MenuItem onClick={handleClose}>Filter</MenuItem>
+          <MenuItem onClick={handleClose}>Profile and Visibility</MenuItem>
+          <MenuItem onClick={handleClose}>Board Style</MenuItem>
+        </Menu>
+      </StyledToolbar>
+    </StyledAppBar>
   );
-}
+};
+
+export default BoardAppBar;
