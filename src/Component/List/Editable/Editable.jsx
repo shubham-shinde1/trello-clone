@@ -4,37 +4,50 @@ import "./Editable.css";
 import CloseIcon from "@mui/icons-material/Close";
 
 function Editable(props) {
-  const [showEdit, setShowEdit] = useState(false);
+  const [isEditable, setIsEditable] = useState(false);
+  const [inputText, setInputText] = useState(props.defaultValue || "");
+
+  const submission = (e) => {
+    e.preventDefault();
+    if (inputText && props.onSubmit) {
+      setInputText("");
+      props.onSubmit(inputText);
+    }
+    setIsEditable(false);
+  };
 
   return (
     <div className="editable">
-      {showEdit ? (
+      {isEditable ? (
         <form
-          className={`editable_edit ${props.editClass || ""}`}
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (props.onSubmit) props.onSubmit();
-          }}
+          className={`editable_edit ${props.editClass ? props.editClass : ""}`}
+          onSubmit={submission}
         >
           <input
             type="text"
-            defaultValue={props.text}
-            placeholder={props.placeholder || "enter item"}
+            value={inputText}
+            placeholder={props.placeholder || props.text}
+            onChange={(event) => setInputText(event.target.value)}
+            autoFocus
           />
 
           <div className="editable_edit_footer">
             <button type="submit">{props.buttonText || "Add"}</button>
 
-            <CloseIcon onClick={() => setShowEdit(false)} />
+            <CloseIcon
+              onClick={() => setIsEditable(false)}
+              className="closeIcon"
+            />
           </div>
         </form>
       ) : (
         <p
-          className={`editable_display ${props.displayClass || ""}`}
-          onClick={() => setShowEdit(true)}
+          className={`editable_display ${
+            props.displayClass ? props.displayClass : ""
+          }`}
+          onClick={() => setIsEditable(true)}
         >
-          {" "}
-          {props.text || "Add item"}{" "}
+          {props.text}
         </p>
       )}
     </div>

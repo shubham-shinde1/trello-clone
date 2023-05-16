@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 p {
@@ -15,6 +16,8 @@ p {
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: cadetblue;
+
 }
 .app_navbar {
   width: 100%;
@@ -26,6 +29,7 @@ p {
   flex: 1;
   width: 100%;
   overflow-x: auto;
+  padding: 20px;
 }
 
 .app_boards {
@@ -35,4 +39,15 @@ p {
   min-width: fit-content;
   display: flex;
   gap: 30px;
+}
+.app_boards_board{
+  min-width: 290px;
+  width: 290px;
+
+}
+
+.app_boards_board_add{
+  background-color: #fff;
+  border-radius: 5px;
+
 }
