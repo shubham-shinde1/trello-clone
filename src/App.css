@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,7 +16,7 @@ p {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* background-color: cadetblue; */
+ 
 
 }
 .app_navbar {
@@ -50,4 +50,66 @@ p {
   background-color: #fff;
   border-radius: 5px;
 
+} */
+
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.app {
+  height: 70vh;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.app_navbar {
+  width: 100%;
+  padding: 20px 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.app_outer {
+  flex: 1;
+  width: 100%;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.app_boards {
+  height: 100%;
+  padding: 20px;
+  padding-bottom: 5px;
+  min-width: fit-content;
+  display: flex;
+  gap: 30px;
+}
+
+.app_boards_board {
+  min-width: 290px;
+  width: 290px;
+}
+
+.app_boards_board_add {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.app_boards_board_add:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

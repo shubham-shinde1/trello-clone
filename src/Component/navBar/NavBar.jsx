@@ -1,3 +1,118 @@
+// import { useState } from "react";
+// import style from "./NavBar.module.css";
+// import {
+//   BsGrid3X3GapFill,
+//   BsSearch,
+//   BsFillBellFill,
+//   BsFillPersonFill,
+//   BsInfoCircleFill,
+//   BsQuestionSquareFill,
+//   BsThreeDotsVertical,
+// } from "react-icons/bs";
+// import { FiPlus, FiChevronDown } from "react-icons/fi";
+
+// function Navbar() {
+//   const [showWorkspaceMenu, setShowWorkspaceMenu] = useState(false);
+//   const [showStarredMenu, setShowStarredMenu] = useState(false);
+//   const [showRecentMenu, setShowRecentMenu] = useState(false);
+
+//   const toggleWorkspaceMenu = () => {
+//     setShowWorkspaceMenu(!showWorkspaceMenu);
+//   };
+
+//   const toggleStarredMenu = () => {
+//     setShowStarredMenu(!showStarredMenu);
+//   };
+
+//   const toggleRecentMenu = () => {
+//     setShowRecentMenu(!showRecentMenu);
+//   };
+
+//   return (
+//     <div className={style.navbar}>
+//       <div className={style.logoContainer}>
+//         <BsGrid3X3GapFill className={style.logo} />
+//         <span className={style.logoText}>Trello</span>
+//       </div>
+
+//       <div className={style.menuContainer}>
+//         <div className={style.dropdown}>
+//           <button
+//             className={`${style.menuButton} ${style.dropdownButton}`}
+//             onClick={toggleWorkspaceMenu}
+//           >
+//             Workspaces <FiChevronDown className={style.arrowIcon} />
+//           </button>
+//           {showWorkspaceMenu && (
+//             <div className={style.dropdownContent}>
+//               <a href="#">Workspace 1</a>
+//               <a href="#">Workspace 2</a>
+//               <a href="#">Workspace 3</a>
+//             </div>
+//           )}
+//         </div>
+//         <div className={style.dropdown}>
+//           <button
+//             className={`${style.menuButton} ${style.dropdownButton}`}
+//             onClick={toggleStarredMenu}
+//           >
+//             Starred <FiChevronDown className={style.arrowIcon} />
+//           </button>
+//           {showStarredMenu && (
+//             <div className={style.dropdownContent}>
+//               <a href="#">Starred Item 1</a>
+//               <a href="#">Starred Item 2</a>
+//               <a href="#">Starred Item 3</a>
+//             </div>
+//           )}
+//         </div>
+//         <div className={style.dropdown}>
+//           <button
+//             className={`${style.menuButton} ${style.dropdownButton}`}
+//             onClick={toggleRecentMenu}
+//           >
+//             Recent <FiChevronDown className={style.arrowIcon} />
+//           </button>
+//           {showRecentMenu && (
+//             <div className={style.dropdownContent}>
+//               <a href="#">Recent Item 1</a>
+//               <a href="#">Recent Item 2</a>
+//               <a href="#">Recent Item 3</a>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//       <div className={style.searchContainer}>
+//         <input type="text" className={style.searchInput} placeholder="Search" />
+//         <BsSearch className={style.searchIcon} />
+//       </div>
+//       <div className={style.buttonContainer}>
+//         <button className={style.iconButton}>
+//           <BsFillBellFill className={style.icon} />
+//         </button>
+//         <button className={style.iconButton}>
+//           <BsInfoCircleFill className={style.icon} />
+//         </button>
+//         <button className={style.iconButton}>
+//           <BsFillPersonFill className={style.icon} />
+//         </button>
+//         <button className={style.iconButton}>
+//           <BsQuestionSquareFill className={style.icon} />
+//         </button>
+//         <button className={style.iconButton}>
+//           <BsThreeDotsVertical className={style.icon} />
+//         </button>
+//         <button className={style.addButton}>
+//           <FiPlus className={style.addIcon} />
+//           <span className={style.addText}>Add</span>
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Navbar;
+
 import { useState } from "react";
 import style from "./NavBar.module.css";
 import {
@@ -15,6 +130,7 @@ function Navbar() {
   const [showWorkspaceMenu, setShowWorkspaceMenu] = useState(false);
   const [showStarredMenu, setShowStarredMenu] = useState(false);
   const [showRecentMenu, setShowRecentMenu] = useState(false);
+  const [notificationCount, setNotificationCount] = useState(0);
 
   const toggleWorkspaceMenu = () => {
     setShowWorkspaceMenu(!showWorkspaceMenu);
@@ -26,6 +142,23 @@ function Navbar() {
 
   const toggleRecentMenu = () => {
     setShowRecentMenu(!showRecentMenu);
+  };
+
+  const handleSearch = (e) => {
+    const searchText = e.target.value;
+    // Perform search functionality here
+    console.log("Search:", searchText);
+  };
+
+  const handleAdd = () => {
+    // Perform add functionality here
+    console.log("Add button clicked");
+  };
+
+  const handleNotificationClick = () => {
+    // Handle notification click functionality here
+    console.log("Notification button clicked");
+    setNotificationCount(0); // Reset the notification count
   };
 
   return (
@@ -83,12 +216,23 @@ function Navbar() {
         </div>
       </div>
       <div className={style.searchContainer}>
-        <input type="text" className={style.searchInput} placeholder="Search" />
+        <input
+          type="text"
+          className={style.searchInput}
+          placeholder="Search"
+          onChange={handleSearch}
+        />
         <BsSearch className={style.searchIcon} />
       </div>
       <div className={style.buttonContainer}>
         <button className={style.iconButton}>
-          <BsFillBellFill className={style.icon} />
+          <BsFillBellFill
+            className={style.icon}
+            onClick={handleNotificationClick}
+          />
+          {notificationCount > 0 && (
+            <span className={style.notificationCount}>{notificationCount}</span>
+          )}
         </button>
         <button className={style.iconButton}>
           <BsInfoCircleFill className={style.icon} />
@@ -102,7 +246,7 @@ function Navbar() {
         <button className={style.iconButton}>
           <BsThreeDotsVertical className={style.icon} />
         </button>
-        <button className={style.addButton}>
+        <button className={style.addButton} onClick={handleAdd}>
           <FiPlus className={style.addIcon} />
           <span className={style.addText}>Add</span>
         </button>

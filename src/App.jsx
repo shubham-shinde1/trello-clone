@@ -7,7 +7,7 @@ import { useState ,useEffect} from "react";
 // import Discription from "./Component/discription/Discription";
 // import CardDetails from "./Component/discription/Discription";
 // import Card from "./Component/List/Card/Card";
-// import Navbar from "./Component/navBar/NavBar";
+
 import Navbar from "./Component/navBar/NavBar"
 const App = () => {
   const [boards, setBoards] = useState(

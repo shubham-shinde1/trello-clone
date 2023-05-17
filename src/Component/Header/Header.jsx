@@ -30,12 +30,14 @@ const StyledIconButton = styled(IconButton)`
 const StyledAppBar = styled(AppBar)`
   background-color: rgba(2, 106, 167, 0.8);
   backdrop-filter: blur(10px);
+  
 `;
 
 const StyledToolbar = styled(Toolbar)`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  margin-left: 5rem;
 `;
 
 const Header= () => {
