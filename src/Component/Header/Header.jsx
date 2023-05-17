@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import {
   StarBorderOutlined,
-  StarOutlined,
+  // StarOutlined,
   MoreVert,
   DashboardOutlined,
   TableChartOutlined,
@@ -38,7 +38,7 @@ const StyledToolbar = styled(Toolbar)`
   align-items: center;
 `;
 
-const BoardAppBar = () => {
+const Header= () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [editTitle, setEditTitle] = React.useState(false);
   const [title, setTitle] = React.useState("Board Title");
@@ -135,4 +135,4 @@ const BoardAppBar = () => {
   );
 };
 
-export default BoardAppBar;
+export default Header;

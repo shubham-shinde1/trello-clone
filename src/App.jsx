@@ -1,12 +1,14 @@
 import Board from "./Component/List/Board/Board";
 import Editable from "./Component/List/Editable/Editable";
-import BoardAppBar from "./Component/Header/Header";
+// import BoardAppBar from "./Component/Header/Header";
+import Header from "./Component/Header/Header"
 import "./App.css";
 import { useState ,useEffect} from "react";
-import Discription from "./Component/discription/Discription";
-import CardDetails from "./Component/discription/Discription";
+// import Discription from "./Component/discription/Discription";
+// import CardDetails from "./Component/discription/Discription";
 
 // import Navbar from "./Component/navBar/NavBar";
+import Navbar from "./Component/navBar/NavBar"
 const App = () => {
   const [boards, setBoards] = useState(
     JSON.parse(localStorage.getItem("prac-kanban")) || []
@@ -112,8 +114,10 @@ const App = () => {
      <>
     <div className="app">
       <div className="app_navbar">
-        <MenuAppBar />
-        {/* <Navbar /> */}
+        {/* <MenuAppBar /> */}
+
+        <Navbar />
+        <Header/>
       </div>
       <div className="app_outer">
         <div className="app_boards">
@@ -141,7 +145,7 @@ const App = () => {
           </div>
         </div>
       </div>
-    </div> */}
+    </div> 
     </>
   );
 };
