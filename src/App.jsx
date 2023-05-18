@@ -7,7 +7,7 @@ import { useState ,useEffect} from "react";
 // import Discription from "./Component/discription/Discription";
 // import CardDetails from "./Component/discription/Discription";
 // import Card from "./Component/List/Card/Card";
-
+// import Background from "./Background/Background";
 import Navbar from "./Component/navBar/NavBar"
 const App = () => {
   const [boards, setBoards] = useState(
@@ -117,6 +117,7 @@ const App = () => {
         {/* <MenuAppBar /> */}
 
         <Navbar />
+        {/* <Background/> */}
         <Header/>
       </div>
       <div className="app_outer">
@@ -149,5 +150,5 @@ const App = () => {
     </>
   );
 };
-
+// welcome to the Application; 
 export default App;
