@@ -1,14 +1,10 @@
 import Board from "./Component/List/Board/Board";
 import Editable from "./Component/List/Editable/Editable";
-import MenuAppBar from "./Component/Header/Header";
 import "./App.css";
 import { useState, useEffect } from "react";
 import Discription from "./Component/discription/Discription";
-//import CardDetails from "./Component/discription/Discription";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./Component/navBar/NavBar";
 import BoardAppBar from "./Component/Header/Header";
-
 
 export default function App() {
   const [boards, setBoards] = useState(
