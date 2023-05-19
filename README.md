@@ -1,5 +1,15 @@
 To Run the APP use "yarn dev" if "npm run dev" do not woork for anyone
 
+Checkout our work:
+Diployment Link: 
+
+Project Contributers
+4: Umang Sharma
+1: Suman Kumar Sharma
+2: Shubham Shinde
+3: Vijay Yagik
+
+
 Today’s Task:
 
 - Go through the PRDs
