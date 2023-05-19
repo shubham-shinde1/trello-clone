@@ -3,25 +3,35 @@ import NotesOutlinedIcon from "@mui/icons-material/NotesOutlined";
 import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
 import SubtitlesOutlinedIcon from "@mui/icons-material/SubtitlesOutlined";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import { useParams } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-
-const styles = {
-  activity: { width: "15px" },
-  button: {
-    border: "none",
-    backgroundColor: "#999",
-    borderRadius: "0.2rem",
-    paddingLeft: "0.4rem",
-    paddingRight: "0.4rem",
-    fontSize: "12px",
-  },
-};
+import Box from "@mui/material/Box";
+import { useState } from "react";
 
 const Discription = () => {
   const navigate = useNavigate();
-  const { cardId } = useParams();
+  const [discription, setDiscription] = useState("");
+  const [showDis, setShowDis] = useState("");
+
+  const [comment, setcomment] = useState("");
+  const [showcomment, setShowcomment] = useState([]);
+
+  const handelDisChange = (event) => {
+    setDiscription(event.target.value);
+  };
+
+  const handleDisClick = () => {
+    setShowDis(discription);
+  };
+
+  const handelComment = (event) => {
+    setcomment(event.target.value);
+  };
+
+  const handleClick = () => {
+    setShowcomment(comment);
+  };
 
   return (
     <>
@@ -32,29 +42,15 @@ const Discription = () => {
               <SubtitlesOutlinedIcon />
             </div>
 
-            <div  className={style.titleb}>
+            <div className={style.titleb}>
               <div>
-              <h2>[Title of card] </h2> <h6>in list (Name of column)</h6>
+                <h2>To Do </h2> <h6>in list task</h6>
               </div>
-              <button onClick={() => navigate(-1)}>❌</button>
-            </div>
-            <div className={style.close}>
-            
-            </div>
-          </div>
-
-          <div className={style.notifications}>
-            <div>
-              <h6>Members</h6>
-              <AccountCircleRoundedIcon />
-              <AccountCircleRoundedIcon />
-            </div>
-            <div>
-              <h6>Notifications</h6>
-              <button className={style.icons} style={styles.button}>
-                <RemoveRedEyeOutlinedIcon style={styles.activity} /> Watch
+              <button className={style.closebtn} onClick={() => navigate(-1)}>
+                ❌
               </button>
             </div>
+            <div className={style.close}></div>
           </div>
 
           <div className={style.description}>
@@ -64,7 +60,28 @@ const Discription = () => {
             </div>
 
             <div className={style.textarea}>
-              <textarea placeholder="Add a more detailed description"></textarea>
+              <p>{showDis}</p>
+              <Box
+                sx={{
+                  width: 500,
+                  maxWidth: "90%",
+                }}
+              >
+                <TextField
+                  sx={{ marginTop: "0.5rem" }}
+                  onChange={handelDisChange}
+                  fullWidth
+                  label="Discription"
+                  id="fullWidth"
+                />
+                <Button
+                  onClick={handleDisClick}
+                  sx={{ marginTop: "0.5rem" }}
+                  variant="contained"
+                >
+                  Save
+                </Button>
+              </Box>
             </div>
           </div>
 
@@ -78,11 +95,30 @@ const Discription = () => {
               <button className={style.hideDetailsBtn}>Hide Details</button>
             </div>
           </div>
-          <AccountCircleRoundedIcon />
-          <AccountCircleRoundedIcon />
-          <p>[name of user] added this card to [tile of column]</p>
-          <p>[time 1:15AM]</p>
-          <input placeholder="Write a comment..."></input>
+          <div className={style.icons}>
+            <AccountCircleRoundedIcon />
+            <Box
+              sx={{
+                width: 500,
+                maxWidth: "85%",
+              }}
+            >
+              <p>{showcomment}</p>
+              <TextField
+                onChange={handelComment}
+                fullWidth
+                label="Comment"
+                id="fullWidth"
+              />
+              <Button
+                onClick={handleClick}
+                sx={{ marginTop: "0.5rem" }}
+                variant="contained"
+              >
+                Comment
+              </Button>
+            </Box>
+          </div>
         </div>
       </div>
     </>

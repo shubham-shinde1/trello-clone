@@ -1,35 +1,11 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Badge,
-  TextField,
-} from "@mui/material";
-import {
-  StarBorderOutlined,
-  StarOutlined,
-  MoreVert,
-  DashboardOutlined,
-  TableChartOutlined,
-  AppsOutlined,
-  FilterListOutlined,
-  NotificationsOutlined,
-  PersonOutlined,
-  ArrowDropDown,
-  ShareOutlined,
-} from "@mui/icons-material";
-import { Menu, MenuItem } from "@mui/material";
-
-const StyledIconButton = styled(IconButton)`
-  color: white;
-`;
+import { AppBar, Toolbar, Typography, TextField } from "@mui/material";
 
 const StyledAppBar = styled(AppBar)`
-  background-color: rgba(2, 106, 167, 0.8);
+  background-color: #999;
   backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
 `;
 
 const StyledToolbar = styled(Toolbar)`
@@ -39,20 +15,9 @@ const StyledToolbar = styled(Toolbar)`
 `;
 
 const BoardAppBar = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [editTitle, setEditTitle] = React.useState(false);
-  const [title, setTitle] = React.useState("Board Title");
+  const [title, setTitle] = React.useState("⭐ Board Title");
   const inputRef = React.useRef();
-
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleTitleClick = () => {
     setEditTitle(true);
@@ -76,9 +41,6 @@ const BoardAppBar = () => {
   return (
     <StyledAppBar position="static" elevation={0}>
       <StyledToolbar>
-        <StyledIconButton edge="start" color="inherit" aria-label="menu">
-          <DashboardOutlined />
-        </StyledIconButton>
         {editTitle ? (
           <TextField
             inputRef={inputRef}
@@ -94,42 +56,6 @@ const BoardAppBar = () => {
             {title}
           </Typography>
         )}
-        <StyledIconButton color="inherit">
-          <StarBorderOutlined />
-        </StyledIconButton>
-        <StyledIconButton color="inherit">
-          <ArrowDropDown />
-        </StyledIconButton>
-        <StyledIconButton color="inherit">
-          <AppsOutlined />
-        </StyledIconButton>
-        <StyledIconButton color="inherit">
-          <TableChartOutlined />
-        </StyledIconButton>
-        <StyledIconButton color="inherit">
-          <FilterListOutlined />
-        </StyledIconButton>
-        <StyledIconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <NotificationsOutlined />
-          </Badge>
-        </StyledIconButton>
-        <StyledIconButton color="inherit">
-          <PersonOutlined />
-        </StyledIconButton>
-        <StyledIconButton color="inherit" onClick={handleClick}>
-          <MoreVert />
-        </StyledIconButton>
-        <StyledIconButton color="inherit">
-          <ShareOutlined />
-        </StyledIconButton>
-        <Menu anchorEl={anchorEl} keepMounted open={open} onClose={handleClose}>
-          <MenuItem onClick={handleClose}>Power-Ups</MenuItem>
-          <MenuItem onClick={handleClose}>Automation</MenuItem>
-          <MenuItem onClick={handleClose}>Filter</MenuItem>
-          <MenuItem onClick={handleClose}>Profile and Visibility</MenuItem>
-          <MenuItem onClick={handleClose}>Board Style</MenuItem>
-        </Menu>
       </StyledToolbar>
     </StyledAppBar>
   );

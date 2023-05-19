@@ -7,6 +7,8 @@ import Discription from "./Component/discription/Discription";
 //import CardDetails from "./Component/discription/Discription";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Component/navBar/NavBar";
+import BoardAppBar from "./Component/Header/Header";
+
 
 export default function App() {
   const [boards, setBoards] = useState(
@@ -114,7 +116,7 @@ export default function App() {
 
       <div className="app">
         <div className="app_navbar">
-          <Navbar />
+          <BoardAppBar />
         </div>
         <div className="app_outer">
           <div className="app_boards">
