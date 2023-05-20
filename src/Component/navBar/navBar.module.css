@@ -12,8 +12,9 @@ body {
   height: 60px;
   padding: 0 20px;
   background-color: transparent;
-
-  background-color: lightgrey;
+  width: 100%;
+  background-color: rgba(192, 190, 190, 0.178);
+  background-blend-mode:soft-light;
   color: #fff;
 }
 .logoContainer {

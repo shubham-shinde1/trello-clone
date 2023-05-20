@@ -10,6 +10,7 @@ import {
   BsThreeDotsVertical,
 } from "react-icons/bs";
 import { FiPlus, FiChevronDown } from "react-icons/fi";
+import BoardAppBar from "../Boardtitle/Boardtitle";
 
 function Navbar() {
   const [showWorkspaceMenu, setShowWorkspaceMenu] = useState(false);
@@ -32,7 +33,7 @@ function Navbar() {
     <div className={style.navbar}>
       <div className={style.logoContainer}>
         <BsGrid3X3GapFill className={style.logo} />
-        <span className={style.logoText}>Trello</span>
+        <span className={style.logoText}> {<BoardAppBar/>}</span>
       </div>
 
       <div className={style.menuContainer}>
