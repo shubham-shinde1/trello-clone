@@ -107,11 +107,11 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/card/:cardId" element={<Discription />} />
+        <Route path="/card/:item" element={<Discription />} />
       </Routes>
 
       <div className="app">
-        <div className="app_navbar">
+        <div className="app_navbar">  
           <BoardAppBar />
         </div>
         <div className="app_outer">

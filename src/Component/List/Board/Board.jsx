@@ -4,8 +4,13 @@ import Options from "../../Options/Options";
 import Card from "../Card/Card";
 import Editable from "../Editable/Editable";
 import Dropdown from "../Dropdown/Dropdown";
+import { useParams } from "react-router-dom";
 
 function Board(props) {
+  const params = useParams()
+  const item = params.item
+
+
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className="board">
