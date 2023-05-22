@@ -4,7 +4,8 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Discription from "./Component/discription/Discription";
 import { Routes, Route } from "react-router-dom";
-import BoardAppBar from "./Component/Header/Header";
+// import BoardAppBar from "./Component/Header/Header";
+import Navbar from "./Component/navBar/NavBar"
 
 export default function App() {
   const [boards, setBoards] = useState(
@@ -106,13 +107,14 @@ export default function App() {
 
   return (
     <>
+    <Navbar/>
       <Routes>
         <Route path="/card/:item" element={<Discription />} />
       </Routes>
 
       <div className="app">
         <div className="app_navbar">  
-          <BoardAppBar />
+          {/* <BoardAppBar /> */}
         </div>
         <div className="app_outer">
           <div className="app_boards">

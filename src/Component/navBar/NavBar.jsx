@@ -27,7 +27,10 @@ function Navbar() {
   const toggleRecentMenu = () => {
     setShowRecentMenu(!showRecentMenu);
   };
-
+  function handleClear() {
+    localStorage.clear();
+    window.location.reload();
+  }
   return (
     <div className={style.navbar}>
       <div className={style.logoContainer}>
@@ -105,6 +108,12 @@ function Navbar() {
         <button className={style.addButton}>
           <FiPlus className={style.addIcon} />
           <span className={style.addText}>Add</span>
+        </button>
+        {/* <button onClick={handleClear} className={style.share}>
+          Clear Board
+        </button> */}
+        <button onClick={handleClear} className={style.attractiveButton}>
+          ❌ <br></br>Clear Board
         </button>
       </div>
     </div>
