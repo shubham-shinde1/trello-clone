@@ -1,5 +1,7 @@
 To Run the APP use "yarn dev" if "npm run dev" do not woork for anyone
 
+deploy Link: https://kanban-boards-board13.onrender.com/
+
 Today’s Task:
 
 - Go through the PRDs
